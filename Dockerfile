@@ -34,6 +34,7 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
 RUN curl https://install.meteor.com | sh
 
 RUN npm i
+RUN npm i -g cucumber
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
