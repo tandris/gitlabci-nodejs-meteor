@@ -6,8 +6,12 @@ ENV GITLAB_CI_URL=yourgitlabci.com
 ENV GITLAB_CI_TOKEN=runners
 ENV GITLAB_CI_NAME=java-maven-sonar-1
 ENV GITLAB_CI_EXECUTOR=shell
+ENV LC_ALL=en_US.UTF-8
 
 RUN apt-get update
+
+RUN sudo locale-gen en_US.UTF-8
+RUN sudo dpkg-reconfigure locales
 
 RUN set -ex \
   && for key in \
