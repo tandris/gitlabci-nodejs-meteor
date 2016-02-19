@@ -4,7 +4,7 @@ MAINTAINER Gabor Rendes <rendesg@gmail.com>
 
 ENV GITLAB_CI_URL=yourgitlabci.com
 ENV GITLAB_CI_TOKEN=runners
-ENV GITLAB_CI_NAME=java-maven-sonar-1
+ENV GITLAB_CI_NAME=ts-meteor
 ENV GITLAB_CI_EXECUTOR=shell
 ENV LC_ALL=en_US.UTF-8
 
@@ -36,9 +36,14 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   && rm "node-v$NODE_VERSION-linux-x64.tar.gz" SHASUMS256.txt.asc
 
 RUN curl https://install.meteor.com | sh
+RUN npm i --unsafe-perm
+RUN npm i -g gulp tslint bower grunt-cli yo handlebars cucumber typings typescript@1.8.0 dts-generator --unsafe-perm
 
-RUN npm i
-RUN npm update -g typescript
+RUN sudo apt-get install libxss1 libappindicator1 libindicator7 \
+  && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+  && sudo dpkg -i google-chrome*.deb \
+  && sudo apt-get install -f \
+  && sudo apt-get install xvfb -y
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
