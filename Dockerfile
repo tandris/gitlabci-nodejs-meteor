@@ -38,6 +38,15 @@ RUN curl https://install.meteor.com | sh
 RUN npm i --unsafe-perm
 RUN npm i -g gulp tslint bower grunt-cli yo handlebars cucumber typings typescript@1.8.0 dts-generator --unsafe-perm
 
+RUN echo deb http://security.ubuntu.com/ubuntu trusty-security main restricted >> /etc/apt/sources.list
+RUN echo deb-src http://security.ubuntu.com/ubuntu trusty-security main restricted >> /etc/apt/sources.list
+RUN echo deb http://security.ubuntu.com/ubuntu trusty-security universe >> /etc/apt/sources.list
+RUN echo deb-src http://security.ubuntu.com/ubuntu trusty-security universe >> /etc/apt/sources.list
+RUN echo deb http://security.ubuntu.com/ubuntu trusty-security multiverse >> /etc/apt/sources.list
+RUN echo deb-src http://security.ubuntu.com/ubuntu trusty-security multiverse >> /etc/apt/sources.list
+
+RUN apt-get update
+
 RUN \
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
   echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
