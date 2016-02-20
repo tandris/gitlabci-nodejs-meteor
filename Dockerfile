@@ -8,6 +8,7 @@ ENV GITLAB_CI_NAME=nodejs-meteor
 ENV GITLAB_CI_EXECUTOR=shell
 ENV LC_ALL=en_US.UTF-8
 
+RUN apt-get update
 RUN sudo locale-gen en_US.UTF-8
 RUN sudo dpkg-reconfigure locales
 
@@ -37,10 +38,11 @@ RUN curl https://install.meteor.com | sh
 RUN npm i --unsafe-perm
 RUN npm i -g gulp tslint bower grunt-cli yo handlebars cucumber typings typescript@1.8.0 dts-generator --unsafe-perm
 
+RUN apt-get -y install libpcre3 libssl-dev libpcre3-dev wget zip gcc
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN dpkg -i google-chrome*.deb
-RUN apt-get install -f
-RUN apt-get install xvfb -y
+RUN apt-get -y install -f
+RUN apt-get -y install xvfb
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
