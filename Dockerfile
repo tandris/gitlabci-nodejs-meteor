@@ -8,8 +8,6 @@ ENV GITLAB_CI_NAME=nodejs-meteor
 ENV GITLAB_CI_EXECUTOR=shell
 ENV LC_ALL=en_US.UTF-8
 
-RUN apt-get update
-
 RUN sudo locale-gen en_US.UTF-8
 RUN sudo dpkg-reconfigure locales
 
@@ -40,9 +38,9 @@ RUN npm i --unsafe-perm
 RUN npm i -g gulp tslint bower grunt-cli yo handlebars cucumber typings typescript@1.8.0 dts-generator --unsafe-perm
 
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN sudo dpkg -i google-chrome*.deb
-RUN sudo apt-get install -f
-RUN sudo apt-get install xvfb -y
+RUN dpkg -i google-chrome*.deb
+RUN apt-get install -f
+RUN apt-get install xvfb -y
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
