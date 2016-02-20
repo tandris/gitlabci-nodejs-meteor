@@ -4,7 +4,7 @@ MAINTAINER Gabor Rendes <rendesg@gmail.com>
 
 ENV GITLAB_CI_URL=yourgitlabci.com
 ENV GITLAB_CI_TOKEN=runners
-ENV GITLAB_CI_NAME=ts-meteor
+ENV GITLAB_CI_NAME=nodejs-meteor
 ENV GITLAB_CI_EXECUTOR=shell
 ENV LC_ALL=en_US.UTF-8
 
