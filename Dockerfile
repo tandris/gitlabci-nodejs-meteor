@@ -39,16 +39,15 @@ RUN npm i --unsafe-perm
 RUN npm i -g gulp tslint bower grunt-cli yo handlebars cucumber typings typescript@1.8.0 dts-generator --unsafe-perm
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
-
 RUN apt-get update
+RUN apt-get install -y xvfb
 
 RUN \
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
   echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
   apt-get update && \
   apt-get install -y google-chrome-stable && \
-  rm -rf /var/lib/apt/lists/* && \
-  apt-get install -y xvfb
+  rm -rf /var/lib/apt/lists/*
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
