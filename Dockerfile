@@ -39,7 +39,6 @@ RUN curl https://install.meteor.com | sh
 RUN npm i --unsafe-perm
 RUN npm i -g gulp tslint bower grunt-cli yo handlebars cucumber typings typescript@1.8.0 dts-generator --unsafe-perm
 
-RUN sudo apt-get install libxss1 libappindicator1 libindicator7
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 RUN sudo dpkg -i google-chrome*.deb
 RUN sudo apt-get install -f
