@@ -44,6 +44,9 @@ RUN \
   apt-get update && \
   apt-get install -y google-chrome-stable && \
   rm -rf /var/lib/apt/lists/*
+  
+RUN \
+  apt-get install -y -q x11vnc xvfb
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
