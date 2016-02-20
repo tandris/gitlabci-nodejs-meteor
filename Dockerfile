@@ -43,10 +43,8 @@ RUN \
   echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
   apt-get update && \
   apt-get install -y google-chrome-stable && \
-  rm -rf /var/lib/apt/lists/*
-  
-RUN \
-  apt-get install -y -q x11vnc xvfb
+  rm -rf /var/lib/apt/lists/* && \
+  apt-get install -y x11vnc xvfb
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
