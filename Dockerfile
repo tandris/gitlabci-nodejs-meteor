@@ -38,12 +38,7 @@ RUN curl https://install.meteor.com | sh
 RUN npm i --unsafe-perm
 RUN npm i -g gulp tslint bower grunt-cli yo handlebars cucumber typings typescript@1.8.0 dts-generator --unsafe-perm
 
-RUN echo deb http://security.ubuntu.com/ubuntu trusty-security main restricted >> /etc/apt/sources.list
-RUN echo deb-src http://security.ubuntu.com/ubuntu trusty-security main restricted >> /etc/apt/sources.list
-RUN echo deb http://security.ubuntu.com/ubuntu trusty-security universe >> /etc/apt/sources.list
-RUN echo deb-src http://security.ubuntu.com/ubuntu trusty-security universe >> /etc/apt/sources.list
-RUN echo deb http://security.ubuntu.com/ubuntu trusty-security multiverse >> /etc/apt/sources.list
-RUN echo deb-src http://security.ubuntu.com/ubuntu trusty-security multiverse >> /etc/apt/sources.list
+RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 
 RUN apt-get update
 
