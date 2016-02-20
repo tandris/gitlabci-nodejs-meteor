@@ -38,11 +38,12 @@ RUN curl https://install.meteor.com | sh
 RUN npm i --unsafe-perm
 RUN npm i -g gulp tslint bower grunt-cli yo handlebars cucumber typings typescript@1.8.0 dts-generator --unsafe-perm
 
-RUN apt-get -y install libpcre3 libssl-dev libpcre3-dev wget zip gcc
-RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN dpkg -i google-chrome*.deb
-RUN apt-get -y install -f
-RUN apt-get -y install xvfb
+RUN \
+  wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - && \
+  echo "deb http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list && \
+  apt-get update && \
+  apt-get install -y google-chrome-stable && \
+  rm -rf /var/lib/apt/lists/*
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
