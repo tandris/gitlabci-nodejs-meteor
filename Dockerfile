@@ -51,6 +51,7 @@ RUN apt-get update
 RUN apt-get install -y xvfb
 
 COPY xvfb /etc/init.d/
+RUN chmod +x /etc/init.d/xvfb
 
 COPY entrypoint.sh /
 RUN chmod +x /entrypoint.sh
