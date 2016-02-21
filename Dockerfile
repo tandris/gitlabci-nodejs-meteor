@@ -7,6 +7,7 @@ ENV GITLAB_CI_TOKEN=runners
 ENV GITLAB_CI_NAME=nodejs-meteor
 ENV GITLAB_CI_EXECUTOR=shell
 ENV LC_ALL=en_US.UTF-8
+ENV DISPLAY=:99
 
 RUN apt-get update
 RUN sudo locale-gen en_US.UTF-8
