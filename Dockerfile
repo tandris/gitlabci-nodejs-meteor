@@ -36,7 +36,7 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   && rm "node-v$NODE_VERSION-linux-x64.tar.gz" SHASUMS256.txt.asc
 
 RUN curl https://install.meteor.com | sh
-RUN meteor update --release 1.3-modules-beta.11
+RUN meteor update --release 1.3-beta.11
 RUN npm i --unsafe-perm
 RUN npm i -g gulp tslint bower grunt-cli yo handlebars cucumber typings typescript@1.8.0 dts-generator --unsafe-perm
 
